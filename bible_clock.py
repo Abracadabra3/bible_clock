@@ -1,6 +1,6 @@
 import tkinter as tk
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 
 # url = "https://labs.bible.org/api/?passage=John+3:16"
@@ -12,10 +12,6 @@ book = ["Genesis ", "Exodus ", 'Leviticus ', 'Numbers ', 'Deuteronomy ',
         'Ezekiel ', 'Daniel ', 'Hosea ', 'Zachariah ', 'Matthew ',
         'Mark ', 'Luke ', 'John ', 'Acts ', 'Romans ', '1 Corinthians ',
         '2 Corinthians ', 'Hebrews ', 'Revelation ']
-
-
-# TODO:
-# figure out how to get a real bible verse for each hour
 
 
 def get_time():
@@ -48,23 +44,23 @@ def get_book(hour):
     six = ['1CH ', 'JHN ']
     seven = ['NUM ', 'NEH ', 'ACT ']
     eight = ['1KI ', 'JHN ',]
-    if hour == '1':
+    if hour == '01':
         return 'LUK '
-    elif hour == '2':
+    elif hour == '02':
         return 'Ezra '
-    elif hour == '3':
+    elif hour == '03':
         return 'LAM '
-    elif hour == '4':
+    elif hour == '04':
         return four[random.randint(0, 3)]
-    elif hour == '5':
+    elif hour == '05':
         return five[random.randint(0, 1)]
-    elif hour == '6':
+    elif hour == '06':
         return six[random.randint(0, 1)]
-    elif hour == '7':
+    elif hour == '07':
         return seven[random.randint(0, 2)]
-    elif hour == '8':
+    elif hour == '08':
         return eight[random.randint(0, 1)]
-    elif hour == '9':
+    elif hour == '09':
         return 'LUK '
     elif hour == '10':
         return 'PSA '
@@ -74,10 +70,28 @@ def get_book(hour):
         return 'LUK '
 
 
-def bible_clock():
+def minute_change(minute):  # minute is the next minute already prepared
+    # check = False
+    # while not check:
+        # if datetime.now().minute == minute:
+        #     check = True
+        # else:
+        #     time.sleep(.2)
+    time_now = datetime.now().minute
+    if str(time_now) == minute:
+        datetime.now().minute
+        return True
+    else:
+        time_now = datetime.now().minute
+        return False
+
+
+def bible_clock(first=False):
     now = get_time()
-    time = now.strftime("%H:%M")
-    hour = now.strftime("%H")
+    now_minute = now.strftime('%M')
+    now = now + timedelta(minutes=1)
+    time = now.strftime('%I:%M')
+    hour = now.strftime("%I")
     minute = now.strftime('%M')
     book = "hello, world"
     book = get_book(hour)
@@ -89,13 +103,22 @@ def bible_clock():
         time += minute[1]
         verse = get_verse(time, book)
     print(time)
+    if first:
+        first = False
+    else:
+        check = False
+        while not check:  # While check is false
+            check = minute_change(minute)
+        # minute_change(minute)
     label_var.set(verse)
+    # bible_clock(False)
 
-    root.after(60000, bible_clock)
+    root.after(100, bible_clock)
 
 
 try:
     root = tk.Tk()
+
 
     label_var = tk.StringVar()
     label_var.set("hello world")
@@ -107,7 +130,7 @@ try:
     # hour = now.strftime("%H")
     # current_book = get_book(hour)
     # get_verse(time, current_book)
-    bible_clock()
+    bible_clock(True)
     root.mainloop()
 except Exception as e:
     print(e)
