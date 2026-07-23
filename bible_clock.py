@@ -7,7 +7,6 @@ except Exception:
     print("This program requires requests")
 
 
-
 # url = "https://labs.bible.org/api/?passage=John+3:16"
 url = "https://bible-api.com/John 3:16"
 
@@ -97,7 +96,8 @@ def minute_change(minute):  # minute is the next minute already prepared
 
 def bible_clock(first=False):
     now = get_time()
-    now = now + timedelta(minutes=1)
+    if not first:  # If this is not the first time
+        now = now + timedelta(minutes=1)
     time = now.strftime('%I:%M')
     hour = now.strftime("%I")
     minute = now.strftime('%M')
