@@ -108,11 +108,13 @@ def bible_clock(first=False):
         book = get_book(hour, minute, False)
         verse = get_verse(time, book)
     if verse == 'ERROR':
-        time = hour
-        time += minute[0]
-        time += ":"
-        time += minute[1]
-        verse = get_verse(time, book)
+        n_time = hour
+        n_time += minute[0]
+        n_time += ":"
+        n_time += minute[1]
+        verse = get_verse(n_time, book)
+    if verse == 'ERROR':  # If it is still an error after trying again
+        verse = time
     print(time)
     if first:
         first = False
