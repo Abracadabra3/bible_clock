@@ -71,12 +71,6 @@ def get_book(hour):
 
 
 def minute_change(minute):  # minute is the next minute already prepared
-    # check = False
-    # while not check:
-        # if datetime.now().minute == minute:
-        #     check = True
-        # else:
-        #     time.sleep(.2)
     time_now = datetime.now().minute
     if str(time_now) == minute:
         datetime.now().minute
@@ -88,7 +82,6 @@ def minute_change(minute):  # minute is the next minute already prepared
 
 def bible_clock(first=False):
     now = get_time()
-    now_minute = now.strftime('%M')
     now = now + timedelta(minutes=1)
     time = now.strftime('%I:%M')
     hour = now.strftime("%I")
@@ -109,9 +102,7 @@ def bible_clock(first=False):
         check = False
         while not check:  # While check is false
             check = minute_change(minute)
-        # minute_change(minute)
     label_var.set(verse)
-    # bible_clock(False)
 
     root.after(100, bible_clock)
 
@@ -119,17 +110,10 @@ def bible_clock(first=False):
 try:
     root = tk.Tk()
 
-
     label_var = tk.StringVar()
     label_var.set("hello world")
     label = tk.Label(root, textvariable=label_var)
     label.pack()
-    # time = get_time()
-    # now = datetime.now()
-    # current_time = now.strftime("%H:%M")
-    # hour = now.strftime("%H")
-    # current_book = get_book(hour)
-    # get_verse(time, current_book)
     bible_clock(True)
     root.mainloop()
 except Exception as e:
