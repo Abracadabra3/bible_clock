@@ -42,7 +42,7 @@ def get_verse(time, book):
     return verse
 
 
-def get_book(hour, minute, first=False):
+def get_book(hour, first=False):
     book = ['GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA',
             '2SA', '1KI', '2KI', '1CH', '2CH', 'EZR', 'NEH', 'EST', 'JOB',
             'PSA', "PRO", 'ECC', 'SNG', 'ISA', "JER", 'LAM', 'EZK', 'DAN',
@@ -56,7 +56,7 @@ def get_book(hour, minute, first=False):
     six = ['1CH ', 'JHN ']
     seven = ['NUM ', 'NEH ', 'ACT ']
     eight = ['1KI ', 'JHN ',]
-    if int(minute) < 30 and first:
+    if first:
         return book[random.randint(0, 65)]
     if hour == '01':
         return 'LUK '
@@ -102,18 +102,18 @@ def bible_clock(first=False):
     hour = now.strftime("%I")
     minute = now.strftime('%M')
     book = "hello, world"
-    book = get_book(hour, minute, True)
+    book = get_book(hour, True)
     verse = get_verse(time, book)
-    if verse == "ERROR" and int(minute) < 30:
-        book = get_book(hour, minute, False)
+    if verse == "ERROR":  # The first time, pick a specific book for that hour
+        book = get_book(hour, False)
         verse = get_verse(time, book)
-    if verse == 'ERROR':
+    if verse == 'ERROR':  # The second time, shift the colon over
         n_time = hour
         n_time += minute[0]
         n_time += ":"
         n_time += minute[1]
         verse = get_verse(n_time, book)
-    if verse == 'ERROR':  # If it is still an error after trying again
+    if verse == 'ERROR':  # If that doesn't work, there is no verse. Display the time.
         verse = time
     print(time)
     if first:
