@@ -138,7 +138,7 @@ try:
     label = tk.Label(root, textvariable=label_var, font=('Times New Roman', 16), fg='black', bg='lightblue',
                      height=8, width=40, padx=10)
     label.config(wraplength=240)
-    label.pack()
+    label.pack(expand=True)
     bible_clock(True)
     root.mainloop()
 except Exception as e:
