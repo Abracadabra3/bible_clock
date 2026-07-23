@@ -84,14 +84,15 @@ def get_book(hour, first=False):
         return 'LUK '
 
 
-def minute_change(minute):  # minute is the next minute already prepared
+def minute_change(minute, verse):  # minute is the next minute already prepared
     time_now = datetime.now().minute
     if time_now == int(minute):
-        datetime.now().minute
-        return True
+        label_var.set(verse)
+        root.after(100, bible_clock)
     else:
-        time_now = datetime.now().minute
-        return False
+        # time_now = datetime.now().minute
+        # return False
+        root.after(200, lambda: minute_change(minute, verse))
 
 
 def bible_clock(first=False):
@@ -118,13 +119,15 @@ def bible_clock(first=False):
     print(time)
     if first:
         first = False
+        # milliseconds = 100
+        root.after(100, bible_clock)
     else:
-        check = False
-        while not check:  # While check is false
-            check = minute_change(minute)
-    label_var.set(verse)
-
-    root.after(100, bible_clock)
+        minute_change(minute, verse)
+        # check = False
+        # while not check:  # While check is false
+        #     check = minute_change(minute, verse)
+    # label_var.set(verse)
+    # root.after(100, bible_clock)
 
 
 try:
