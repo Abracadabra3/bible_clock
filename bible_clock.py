@@ -38,12 +38,22 @@ def get_verse(time, book):
     return verse
 
 
-def get_book(hour):
+def get_book(hour, minute, first=False):
+    book = ['GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA',
+            '2SA', '1KI', '2KI', '1CH', '2CH', 'EZR', 'NEH', 'EST', 'JOB',
+            'PSA', "PRO", 'ECC', 'SNG', 'ISA', "JER", 'LAM', 'EZK', 'DAN',
+            'HOS', "JOL", 'AMO', "OBA", 'JON', 'MIC', "NAM", 'HAB', "ZEP",
+            'HAG', "ZEC", 'MAL', 'MAT', 'MRK', 'LUK', "JHN", 'ACT', 'ROM',
+            '1CO', '2CO', 'GAL', 'EPH', 'PHP', 'COL', '1TH', '2TH', '1TI',
+            '1TI', 'TIT', 'PHM', 'HEB', 'JAS', '1PE', '2PE', '1JN', '2JN',
+            '3JH', 'JUD', 'REV']
     four = ['GEN ', 'PSA ', 'ISA ', 'EZK ']
     five = ['PSA ', 'ISA ']
     six = ['1CH ', 'JHN ']
     seven = ['NUM ', 'NEH ', 'ACT ']
     eight = ['1KI ', 'JHN ',]
+    if int(minute) < 30 and first:
+        return book[random.randint(0, 65)]
     if hour == '01':
         return 'LUK '
     elif hour == '02':
@@ -72,7 +82,7 @@ def get_book(hour):
 
 def minute_change(minute):  # minute is the next minute already prepared
     time_now = datetime.now().minute
-    if str(time_now) == minute:
+    if time_now == int(minute):
         datetime.now().minute
         return True
     else:
@@ -87,8 +97,11 @@ def bible_clock(first=False):
     hour = now.strftime("%I")
     minute = now.strftime('%M')
     book = "hello, world"
-    book = get_book(hour)
+    book = get_book(hour, minute, True)
     verse = get_verse(time, book)
+    if verse == "ERROR" and int(minute) < 30:
+        book = get_book(hour, minute, False)
+        verse = get_verse(time, book)
     if verse == 'ERROR':
         time = hour
         time += minute[0]
