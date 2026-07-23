@@ -127,10 +127,15 @@ def bible_clock(first=False):
 
 try:
     root = tk.Tk()
+    root.title('Bible Clock')
+    root.geometry('400x300')
+    root.configure(bg='lightblue')
 
     label_var = tk.StringVar()
     label_var.set("hello world")
-    label = tk.Label(root, textvariable=label_var)
+    label = tk.Label(root, textvariable=label_var, font=('Times New Roman', 16), fg='black', bg='lightblue',
+                     height=8, width=40, padx=10)
+    label.config(wraplength=240)
     label.pack()
     bible_clock(True)
     root.mainloop()
