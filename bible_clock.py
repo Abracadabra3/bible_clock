@@ -1,7 +1,12 @@
 import tkinter as tk
-import requests
 from datetime import datetime, timedelta
 import random
+try:
+    import requests
+except Exception:
+    print("This program requires requests")
+
+
 
 # url = "https://labs.bible.org/api/?passage=John+3:16"
 url = "https://bible-api.com/John 3:16"
