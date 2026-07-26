@@ -88,7 +88,7 @@ def minute_change(minute, verse):  # minute is the next minute already prepared
     time_now = datetime.now().minute
     if time_now == int(minute):
         label_var.set(verse)
-        root.after(100, bible_clock)
+        root.after(1000, bible_clock)
     else:
         # time_now = datetime.now().minute
         # return False
@@ -119,6 +119,7 @@ def bible_clock(first=False):
     print(time)
     if first:
         first = False
+        label_var.set(verse)
         # milliseconds = 100
         root.after(100, bible_clock)
     else:
@@ -140,7 +141,7 @@ try:
     label_var.set("hello world")
     label = tk.Label(root, textvariable=label_var, font=('Times New Roman', 16), fg='black', bg='lightblue',
                      height=8, width=40, padx=10)
-    label.config(wraplength=240)
+    label.config(wraplength=260)
     label.pack(expand=True)
     bible_clock(True)
     root.mainloop()
