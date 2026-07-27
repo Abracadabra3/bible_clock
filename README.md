@@ -8,7 +8,7 @@ For example, if it was 3:16, the clock could say "For God so loved the world tha
 
 <img src="images/psalms 11-4.png" alt="Bible Clock window">
 
-Demo link coming soon!
+See the [releases page](https://github.com/Abracadabra3/bible_clock/releases/tag/1.0) to download and run the program!
 
 ## Features
 
@@ -24,6 +24,6 @@ This is my first time using Tkinter to make a GUI! I struggled with updating the
 
 ## Credits
 
-I used [Oneshot AI](https://oneshot-chi-nine.vercel.app/) to help troubleshoot Tkinter issues with the GUI. This project was created for [Stardance](stardance.space/go), a free program for teens to create technical projects and get prizes.
+I used an AI to help troubleshoot Tkinter issues with the GUI.
 
-This project is also made for Stardance!
+This project was created for [Stardance](stardance.space/go), a free program for teens to create technical projects and get prizes.
