@@ -4,9 +4,12 @@ The address of the Bible verse is the same as the time!
 
 For example, if it was 3:16, the clock could say "For God so loved the world that He gave His only son that whoever believes in Him shall not perish but have eternal life. John 3:16"
 
+***This project takes Bible verses out of context. This means that the text displayed on the clock may not always make sense and can even seem to say the opposite of what the Bible teaches.*
+READ THE VERSES IN CONTEXT TO UNDERSTAND WHAT IT REALLY MEANS!**
+
 ## Quickstart
 
-<img src="images/psalms 11-4.png" alt="Bible Clock window">
+<img src="images/demo.png" alt="Bible Clock window" style="width: 70%; height: auto;">
 
 See the [releases page](https://github.com/Abracadabra3/bible_clock/releases/tag/1.0) to download and run the program!
 
