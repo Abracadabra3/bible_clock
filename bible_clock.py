@@ -136,6 +136,8 @@ try:
     root.title('Bible Clock')
     root.geometry('400x300')
     root.configure(bg='lightblue')
+    root.attributes('-topmost', True)
+    root.resizable(False, False)
 
     label_var = tk.StringVar()
     label_var.set("hello world")
