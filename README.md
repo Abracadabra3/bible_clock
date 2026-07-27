@@ -9,7 +9,7 @@ READ THE VERSES IN CONTEXT TO UNDERSTAND WHAT IT REALLY MEANS!**
 
 ## Quickstart
 
-<img src="images/demo.png" alt="Bible Clock window" style="width: 70%; height: auto;">
+<img src="images/demo.png" alt="Bible Clock window" style="width: 50%; height: auto;">
 
 See the [releases page](https://github.com/Abracadabra3/bible_clock/releases/tag/1.0) to download and run the program!
 
