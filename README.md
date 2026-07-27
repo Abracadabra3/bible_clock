@@ -15,6 +15,8 @@ Demo link coming soon!
 - Popup window displaying Bible verses
 - Bible verse changes on the minute
 - Text centered in the window
+- Window stays open and on top to make seeing the clock easy
+
 
 ## Design decisions
 
